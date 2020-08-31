@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/fontawesome.min.js"></script>
+  </head>
+  <body>
+     
+
+   
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center"><%= title %></h2>
+        <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" id="signupbox" style="margin-top: 50px;">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="panel-title"><h4>Create New Account</h4></div>
+            <div style="float: right; font-size: 85%; position: relative; top: -10px;"></div>
+          </div>
+        <div class="panel-body">
+              <% if(msg != ''){ %>
+                <p style="text-align: center; color: red;"><%= msg %></p>
+                <% } %>
+
+        <form action="/signup" class="form-horizontal" role="form" method="POST">
+          
+          <div class="alert alert-danger" id="signupalert" style="display: none; color: red;">
+            <p>Error:</p>
+            <span></span>  
+          </div>  
+          
+          <div class="form-group">
+            <label for="name" class="control-label col-md-3">User Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="uname" placeholder="Enter Username" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="control-label col-md-3">Email</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="email" placeholder="Enter Email" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="control-label col-md-3">Password</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" name="password" placeholder="Enter Password" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confpassword" class="control-label col-md-3">Confirm Password</label>
+            <div class="col-md-9">
+              <input type="password" class="form-control" name="confpassword" placeholder="Enter Password" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <!-- Button-->
+            <div class="col-md-9 col-md-offset-3">
+              <input type="submit" type="button" class="btn btn-info" value="sign up">
+            </div>
+          </div>
+
+          <p> Already have account ? <a href="/">Login here</a></p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+

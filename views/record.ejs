@@ -1,0 +1,114 @@
+<%- include('header') %>
+
+    <div class="conainer-md">
+      <div class="row" style="display: block; width: 100%; margin: auto;">
+        <% if(success !=''){ %> 
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+        <% } %>
+      </div>
+    </div>    
+      
+          <div class="container-md mt-5 mb-4" id="filter-box">
+            <div class="row offset-lg-1 mb-3">
+          <h4 class="fhead pb-1">Filter Records</h4>
+            </div>
+
+             <div class="row offset-lg-1">
+              <form action="/search" id="EmployeeForm" class="mb-5 form-horizontal row row-cols-lg-4 row-cols-md-4 row-cols-sm-4 row-cols-1" method="post" role="search">
+                  
+                  <div class="col-lg-3 col-md-3">
+                      <div class="form-group">
+                          <label for="name" class="col-md-12 control-label">By Name</label>
+                          <div class="col-lg-12">
+                              <input type="text" class="form-control" name="fltrname" placeholder="Enter Name">
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-3">
+                      <div class="form-group">
+                          <label for="email" class="col-md-12 control-label">By Email</label>
+                          <div class="col-lg-12">
+                              <input type="text" class="form-control" name="fltremail" placeholder="Enter Email">
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-3">
+                      <div class="form-group">
+                          <label for="emptype" class="col-md-12 control-label">Employee Type</label>
+                          <div class="col-lg-12">
+                              <select name="fltremptype" class="form-control" required>
+                                  <option value="" selected disabled>select type</option>
+                                  <option value="Hourly">Hourly</option>
+                                  <option value="Fixed">Fixed</option>
+                              </select>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="col-lg-3 col-md-3">
+                      <div class="form-group">
+                          <label for="submit" class="col-lg-12 control-label">&nbsp;</label>
+                          <div class="col-lg-12">
+                              <input type="submit" class="form-control btn btn-primary" name="submit" placeholder="Filter">
+                          </div>
+                      </div>
+                  </div>
+                  
+              </form>
+      </div>
+  </div>
+
+
+  <div class="container-md mt-5 mb-5">
+  <div class="row col-lg-12">
+    <h4 class="frhead pb-1"><%= title %></h4>
+  </div>
+  </div>
+  
+  <div class="container-md mt-4">
+    <div class="row">
+    <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Employee Type</th>
+          <th>Rate/hr</th>
+          <th>Working Hours</th>
+          <th>Total Amount</th> 
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if(records.length > 0){%> 
+      <% records.forEach(function(row){ %>
+      <tr>
+        <td><%= row.name %></td>
+        <td><%= row.email %></td>
+        <td><%= row.etype %></td>
+        <td><%= row.hourlyrate %></td>
+        <td><%= row.totalHour %></td>
+        <td><%= row.total %></td>
+        <td class=""><a class="btn btn-primary btn-sm" href="/edit/<%= row._id %>"><i class="fa fa-edit"></i></a>
+          <a class="btn btn-danger btn-sm" href="/delete/<%= row._id %>" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i></a>
+        </td>
+
+      </tr>
+      <% })}else{ %>
+        <tr>
+          <td colspan="6">Sorry...<br>No Record Found.</td>
+        </tr>
+      <% }%>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+
+  </body>
+</html>

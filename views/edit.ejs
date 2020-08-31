@@ -1,0 +1,162 @@
+<%- include('header') %>
+ 
+    <div class="container-md">
+      <div class="row">
+        <div class="title new-head col-lg-12">
+          <h3 class="pb-1"><%= title %></h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container-md add-employee">
+      <div class="row">
+        <form action="/update" class="col-lg-10 offset-lg-1" id="addbox" role="form" method="POST">
+           
+          <input type="hidden" name="id" value="<%= records._id %>">
+          <div class="alert alert-danger" id="signupalert" style="display: none;">
+            <p>Error:</p>
+            <span></span>  
+          </div>  
+         
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 offset-lg-1 offset-md-1 offset-sm-1">
+            <label for="name" class="control-label col-form-label col-lg-3 col-md-3 col-sm-3">Name</label>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+              <input type="text" class="form-control" name="uname" value="<%= records.name %>" placeholder="Enter Name" required>
+            </div>
+          </div>
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 offset-lg-1 offset-md-1 offset-sm-1">
+            <label for="email" class="control-label col-form-label col-lg-3 col-md-3 col-sm-3">Email</label>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+              <input type="text" class="form-control" name="email" value="<%= records.email %>" placeholder="Enter Email" required>
+            </div>
+          </div>
+    
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 offset-lg-1 offset-md-1 offset-sm-1">
+            <label for="emptype" class="control-label col-form-label col-lg-3 col-md-3 col-sm-3">Employee Type</label>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+              <select class="form-control" name="emptype" required>
+                <option value="choose" disabled selected>-- Choose Type --</option>
+                <option value="Hourly"<% if(records.etype =="Hourly"){ %> selected <% } %>>Hourly</option>
+                <option value="Fixed"<% if(records.etype == "Fixed"){ %> selected <% } %>>Fixed</option>
+              </select>
+            </div>
+          </div>
+    
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 offset-lg-1 offset-md-1 offset-sm-1">
+            <label for="hrlyrate" class="control-label col-form-label col-lg-3 col-md-3 col-sm-3">Rate per hour</label>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+              <input type="text" class="form-control" name="hrlyrate" value="<%= records.hourlyrate %>" placeholder="Enter per Hour Rate" required>
+            </div>
+          </div>
+    
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-2 offset-lg-1 offset-md-1 offset-sm-1">
+            <label for="ttlhr" class="control-label col-form-label col-lg-3 col-md-3 col-sm-3">Total working hour</label>
+            <div class="col-lg-8 col-md-7 col-sm-7">
+              <input type="text" class="form-control" name="ttlhr" value="<%= records.totalHour %>" placeholder="Enter Total Hours" required>
+            </div>
+          </div>
+    
+          <div class="form-group row row-cols-lg-2 row-cols-md-2 row-cols-sm-1 offset-lg-2">
+            <!-- Button-->
+            <div class="col-lg-8 offset-lg-2 mt-3 col-md-7 offset-md-4 col-sm-7 offset-sm-4">
+              <input type="submit" type="button" class="btn btn-info" value="Submit">
+            </div>
+          </div>
+    
+        </form>
+      </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--
+
+    <div class="container">
+      <div class="row">
+        <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" id="signupbox" style="margin-top: 50px;">
+        <div class="panel">
+          <div class="panel-heading">
+            <div class="panel-title"><%= title %></div>
+            <div style="float: right; font-size: 85%; position: relative; top: -10px;"></div>
+          </div>
+        <div class="panel-body">
+        <form action="/update/" class="form-horizontal" role="form" method="POST">
+          
+            <input type="hidden" name="id" value="<%= records._id %>">
+          <div class="alert alert-danger" id="signupalert" style="display: none;">
+            <p>Erroe:</p>
+            <span></span>  
+          </div>  
+          
+          <div class="form-group">
+            <label for="name" class="control-label col-md-3">Name</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="uname" value="<%= records.name %>" placeholder="Enter your Name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="control-label col-md-3">Email</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="email" value="<%= records.email %>" placeholder="Enter Email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="emptype" class="control-label col-md-3">Employee Type</label>
+            <div class="col-md-9">
+              <select class="form-control" name="emptype" required>
+                <option value="choose" disabled selected>-- Choose Type --</option>
+                <option value="Hourly"<% if(records.etype =="Hourly"){ %> selected <% } %>>Hourly</option>
+                <option value="Fixed" <% if(records.etype == "Fixed"){ %> selected <% } %>>Fixed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="hrlyrate" class="control-label col-md-3">Rate per hour</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="hrlyrate" value="<%= records.hourlyrate %>" placeholder="Enter per Hour Rate">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ttlhr" class="control-label col-md-3">Total Hour</label>
+            <div class="col-md-9">
+              <input type="text" class="form-control" name="ttlhr" value="<%= records.totalHour %>" placeholder="Enter Total Hours">
+            </div>
+          </div>
+
+          <div class="form-group">
+          
+            <div class="col-md-9 col-md-offset-3">
+              <input type="submit" type="button" class="btn btn-info" value="Submit">
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+      </div>
+    </div>
+-->
+
+  </body>
+</html>
